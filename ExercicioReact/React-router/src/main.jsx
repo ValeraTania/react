@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/country" element={<Country/>}/>
+        <Route path='/country/:name' element={<Country/>}/>
         <Route path="/continents" element={<Continents />} />
       </Routes>
     </BrowserRouter>

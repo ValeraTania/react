@@ -65,3 +65,10 @@
     object-fit: cover;
     border-radius: 8px;
 }
+
+nav{
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+    color:#fff;
+}
