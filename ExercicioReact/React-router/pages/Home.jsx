@@ -7,36 +7,38 @@ function Home() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
 
-//   const fetchCountries = async () => {
-//     try {
-//       const response = await fetch(`https://restcountries.com/v3.1/all`);
-//       const countries = await response.json();
-//       setCountries(countries);
-//       console.log(countries);
-//     } catch (error) {
-//       console.error("Error finding countries: ", error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch(`https://restcountries.com/v3.1/all`);
+      const countries = await response.json();
+      setCountries(countries);
+      console.log(countries);
+    } catch (error) {
+      console.error("Error finding countries: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-//   // useEffect para buscar os dados ao carregar
-//   useEffect(() => {
-//     fetchCountries();
-//   }, []);
+  // useEffect para buscar os dados ao carregar
+  useEffect(() => {
+    fetchCountries();
+  }, []);
 
-// return (
-//   <div className="grid">
-//             {filteredCountries.map((country) => (
-//               <Link to={`/country/${country.name.common}`} key={country.cca3}>
-//                 <Card/>
-//                   </Link>
-//                   )}
+return (
+  <div className="grid">
+            {countries.filter((country) =>
+    country.name.common.toLowerCase().includes(search.toLowerCase())
+            .map((country) => (
+              <Link to={`/country/${country.name.common}`} key={country.cca3}>
+                <Card name={country.name.common}/>
+                  </Link>
+                  )}
 
-//                 </div>
-//                 )
+                </div>
+                )
 
-  return <CountriesList />;
+  //return <CountriesList />;
 }
 
 export default Home;
