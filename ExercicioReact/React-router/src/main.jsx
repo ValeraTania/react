@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router";
 import Home from "../pages/Home.jsx";
-import Continents from "../pages/Continents.jsx";
 import Country from "../pages/Country.jsx";
+import Europe from "../pages/Europe.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,14 +17,14 @@ createRoot(document.getElementById("root")).render(
           </li>
         </span>
         <li>
-        <Link to='/continents'>Continents</Link>
+        <Link to='/europe'>Europe</Link>
         </li>
 
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/country/:name' element={<Country/>}/>
-        <Route path="/continents" element={<Continents />} />
+        <Route path="/europe" element={<Europe />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

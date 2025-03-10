@@ -3,7 +3,6 @@ import "./CountriesList.css"; // Importando o CSS
 import Card from "./Card";
 
 export default function CountriesList() {
-  // const OldCountries = ['Portugal', 'Spain', 'France'];
 
   // To-do
   // hacer un boton click me ✅
@@ -20,9 +19,8 @@ export default function CountriesList() {
       const response = await fetch(`https://restcountries.com/v3.1/all`);
       const countries = await response.json();
       setCountries(countries);
-      console.log(countries)
-      console.log(Object.values(countries[2].languages) )
-      
+      console.log(countries);
+      console.log(Object.values(countries[2].languages));
     } catch (error) {
       console.error("Error finding countries:", error);
     } finally {
@@ -59,12 +57,13 @@ export default function CountriesList() {
       ) : (
         <div className="grid">
           {filteredCountries.map((country) => (
+            
             <Card
               key={country.cca3}
               name={country.name.common}
               flag={country.flags.svg}
               capital={country.capital}
-              languages={Object.values(country.languages)}
+              region={country.region}
               population={country.population}
             />
           ))}

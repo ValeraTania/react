@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 
-function Country() {
+export default function Country() {
   const countryName = useParams();
   const [country, setCountry] = useState("");
 
@@ -44,4 +44,3 @@ function Country() {
   );
 }
 
-export default Country;
