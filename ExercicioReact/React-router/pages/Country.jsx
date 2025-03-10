@@ -1,9 +1,15 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import Card from "./Card";
+import CurrencyCountryList from "./CurrencyCountryList";
 
 export default function Country() {
   const countryName = useParams();
+
+//console.log('countryname',countryName.name);
+
   const [country, setCountry] = useState("");
+  const [currency, setCurrency] = useState("");
 
   const getCountry = async () => {
     try {
@@ -11,36 +17,40 @@ export default function Country() {
         `https://restcountries.com/v3.1/name/${countryName.name}`
       );
       const country = await response.json();
+
+      //console.log("teste", country[0].currencies);
+      const currencyName = Object.keys(country[0].currencies);
+
+      // console.log("country-currency", country.currencies);
+      // console.log("currencyName", currencyName[0]);
+
+      setCurrency(currencyName[0]);
       setCountry(country[0]);
     } catch (error) {
       console.error("No country found: ", error);
-    } 
+    }
   };
 
   useEffect(() => {
     getCountry();
   }, []);
 
+
   return (
     country && ( // if country loads then shows the card
-      <div key={country.cca3} className="card">
-        <img
-          src={country.flags.svg}
-          alt={country.name.common}
-          className="flag"
+      <>
+        <Card
+          key={country.cca3}
+          name={country.name.common}
+          flag={country.flags.svg}
+          capital={country.capital}
+          region={country.region}
+          population={country.population}
         />
-        <h2>{country.name.common}</h2>
-        <p>
-          <strong>Capital:</strong> {country.capital?.[0] || "N/A"}
-        </p>
-        <p>
-          <strong>Region:</strong> {country.region}
-        </p>
-        <p>
-          <strong>Population:</strong> {country.population.toLocaleString()}
-        </p>
-      </div>
+
+        <h4>Countries with the same Currency</h4>
+        <CurrencyCountryList currency={currency} countryName={countryName.name}/>
+      </>
     )
   );
 }
-
