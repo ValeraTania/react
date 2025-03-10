@@ -4,31 +4,31 @@ import Card from "./Card";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
- // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const fetchCountries = async () => {
-    //try {
+    try {
       const response = await fetch(`https://restcountries.com/v3.1/all`);
       const countries = await response.json();
       setCountries(countries);
-      console.log(countries);
-    // } catch (error) {
-    //   console.error("Error finding countries: ", error);
-    // } finally {
-    //  // setLoading(false);
-    // }
+     // console.log(countries);
+    } catch (error) {
+      console.error("Error finding countries: ", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // useEffect para buscar os dados ao carregar
   useEffect(() => {
     fetchCountries();
   }, []);
-
+  console.log("countries list", countries);
   return (
-    <div className="grid">
-      {
-      countries.map((country) => {
-       // <Link to={`/country/${country.name.common}`} key={country.cca3}>
+    countries && (
+      <div className="grid">
+        {countries.map((country) => {
+          // <Link to={`/country/${country.name.common}`} key={country.cca3}>
           <Card
             key={country.cca3}
             name={country.name.common}
@@ -37,9 +37,9 @@ export default function Home() {
             region={country.region}
             population={country.population}
           />
-       // </Link>
-      })}
-    </div>
+          // </Link>
+        })}
+      </div>
+    )
   );
 }
-

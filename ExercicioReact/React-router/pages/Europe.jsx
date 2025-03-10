@@ -3,7 +3,7 @@ import Card from "./Card";
 import { useEffect } from "react";
 
 export default function Europe() {
-  const [europeCountries, setEuropeCountries] = useState();
+  const [europeCountries, setEuropeCountries] = useState([]);
 
   const europeanCountries = async () => {
     const response = await fetch(
@@ -16,12 +16,12 @@ export default function Europe() {
 
   useEffect(() => {
     europeanCountries();
-console.log('Countries',europeCountries);
+
   }, []);
 
   return (
-    <>
-      {/* <div className="container">
+    
+    europeCountries && (<div className="container">
         <div className="grid">
           {europeCountries.map((country) => (
                 
@@ -35,7 +35,8 @@ console.log('Countries',europeCountries);
                 />
               ))}
         </div>
-      </div> */}
-    </>
+      </div>)
+      
+    
   );
 }
