@@ -33,7 +33,7 @@ export default function Country() {
 
   useEffect(() => {
     getCountry();
-  }, []);
+  }, [countryName.name]);
 
 
   return (

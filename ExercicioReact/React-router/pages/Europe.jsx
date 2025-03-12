@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "./Card";
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 export default function Europe() {
   const [europeCountries, setEuropeCountries] = useState([]);
@@ -24,7 +25,7 @@ export default function Europe() {
     europeCountries && (<div className="container">
         <div className="grid">
           {europeCountries.map((country) => (
-                
+                <Link to={`/country/${country.name.common}`}>
                 <Card
                   key={country.cca3}
                   name={country.name.common}
@@ -33,6 +34,7 @@ export default function Europe() {
                   region={country.region}
                   population={country.population}
                 />
+                </Link>
               ))}
         </div>
       </div>)

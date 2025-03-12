@@ -1,4 +1,6 @@
-export default function SmallCard({flag, name}) {
+import CurrencyCard from "./CurrencyCard";
+
+export default function SmallCard({flag, name, currency}) {
   return (
     <div
       className="card"
@@ -9,6 +11,8 @@ export default function SmallCard({flag, name}) {
     >
       <img src={flag} alt={name} className="flag" />
       <h2>{name}</h2>
+      <CurrencyCard>{currency}</CurrencyCard>
+
     </div>
   );
 }

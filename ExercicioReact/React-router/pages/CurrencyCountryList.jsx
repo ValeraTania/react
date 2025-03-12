@@ -28,6 +28,7 @@ export default function CurrencyCountryList({ currency, countryName }) {
               key={countryCurrency.cca3}
               name={countryCurrency.name.common}
               flag={countryCurrency.flags.svg}
+              currency={currency}
             />
             </Link>
           );

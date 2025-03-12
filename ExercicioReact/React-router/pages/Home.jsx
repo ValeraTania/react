@@ -38,8 +38,9 @@ export default function Home() {
               capital={country.capital}
               region={country.region}
               population={country.population}
+              currency={country.currency}
             />
-            ;
+            
           </Link>
         );
       })}

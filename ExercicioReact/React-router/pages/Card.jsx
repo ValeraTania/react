@@ -1,6 +1,8 @@
 import { useState } from "react";
+import NavLabel from "./NavLabel";
+import CurrencyCard from "./CurrencyCard";
 
-export default function Card({ name, flag, capital, population, region }) {
+export default function Card({ name, flag, capital, population, region,currency }) {
   const [isLight, setTheme] = useState(true);
 
   return (
@@ -22,10 +24,21 @@ export default function Card({ name, flag, capital, population, region }) {
         {region}
       </p>
       <p>
+        
+        
         <strong>Population: </strong>
         {population.toLocaleString()}
       </p>
-      <button onClick={() => setTheme((prev) => !prev)}>Click me!</button>
+      <button onClick={() => setTheme((prev) => !prev)}>
+        <NavLabel>
+          Click me!
+        </NavLabel>
+      </button>
+      <button>
+        <NavLabel>
+          Back
+        </NavLabel>
+      </button>
     </div>
   );
 }

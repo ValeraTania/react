@@ -7,20 +7,14 @@ import Home from "../pages/Home.jsx";
 import Country from "../pages/Country.jsx";
 import Europe from "../pages/Europe.jsx";
 import CurrencyCountryList from "../pages/CurrencyCountryList.jsx";
+import Nav from "../pages/Nav";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <nav>
-        <span>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </span>
-        <li>
-          <Link to="/europe">Europe</Link>
-        </li>
-      </nav>
+      <Nav>
+
+      </Nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/country/:name" element={<Country />} />

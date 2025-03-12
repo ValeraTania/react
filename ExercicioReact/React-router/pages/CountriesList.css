@@ -39,7 +39,7 @@
 /* Grid de países */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
@@ -71,5 +71,23 @@ nav{
     display: flex;
     text-decoration: none;
     cursor: pointer;
+    background: #3a3a3a;
+    padding: .5rem .8rem;
+    gap: 1rem;
+    border-radius: .25rem;
+}
+
+li{
+    list-style-type: none;
     color:#fff;
+}
+
+.coin{
+    width: 1.5rem;
+}
+
+.currency-card{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
 }
