@@ -1,11 +1,19 @@
-type ButtonProps ={
+import "./Button.css"
+
+type Variant = "royalblue" | "gray" | "green"
+
+
+interface ButtonProps {
     label: string,
     disabled?:boolean,
-    variant?: "primary" | "secondary"
+    variant?: Variant
 }
 
-function Button(): ButtonProps{
- <button>{label}</button>
+function Button({label, disabled= false, variant}: ButtonProps){
+return (
+<button className={`${disabled}`} style={{ background: variant }}>{label}</button>
+
+)
 
 
 }
